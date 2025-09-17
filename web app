@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
 <body>
-<canvas id="c" width="300" height="300" style="border:1px solid"></canvas>
+<canvas id="c" width="300" height="300" style="border:1px solid black"></canvas>
 <script>
-let c=document.getElementById('c'), ctx=c.getContext('2d'), x=150,y=150,r=15;
-window.onkeydown=e=>{
-  if(e.key==='ArrowLeft')x-=5;
-  else if(e.key==='ArrowRight')x+=5;
-  else if(e.key==='ArrowUp')y-=5;
-  else if(e.key==='ArrowDown')y+=5;
-  x=Math.min(c.width-r, Math.max(r,x));
-  y=Math.min(c.height-r, Math.max(r,y));
-  ctx.clearRect(0,0,c.width,c.height);
+let c = document.getElementById('c'), ctx = c.getContext('2d');
+let x = 150, y = 150, r = 15;
+
+function draw() {
+  ctx.clearRect(0, 0, c.width, c.height);
   ctx.beginPath();
-  ctx.arc(x,y,r,0,7);
+  ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.fill();
-};
+}
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') x -= 5;
+  if (e.key === 'ArrowRight') x += 5;
+  if (e.key === 'ArrowUp') y -= 5;
+  if (e.key === 'ArrowDown') y += 5;
+  x = Math.min(c.width - r, Math.max(r, x));
+  y = Math.min(c.height - r, Math.max(r, y));
+  draw();
+});
+
+draw();
 </script>
 </body>
 </html>
