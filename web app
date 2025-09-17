@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>RPS</title></head>
+<body style="text-align:center;font-family:sans-serif;margin-top:50px;">
+  <h1>Rock Paper Scissors</h1>
+  <button onclick="play('rock')">✊ Rock</button>
+  <button onclick="play('paper')">✋ Paper</button>
+  <button onclick="play('scissors')">✌️ Scissors</button>
+  <div id="result" style="margin-top:20px;font-weight:bold;"></div>
+  <script>
+    function play(u){
+      const c=['rock','paper','scissors'][Math.floor(Math.random()*3)];
+      const w=(u===c)?"Tie":(u==='rock'&&c==='scissors'||u==='paper'&&c==='rock'||u==='scissors'&&c==='paper')?"You win":"You lose";
+      document.getElementById('result').textContent = `${w}! You: ${u} - Computer: ${c}`;
+    }
+  </script>
+</body>
+</html>
